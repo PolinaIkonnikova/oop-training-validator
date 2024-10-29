@@ -10,31 +10,26 @@ class NumberSchema(TypeSchema):
         self._range_nums: tuple[int, int] | None = None
 
     @property
-    def _main_condition_for_num(self):
+    def _main_condition_for_entity(self):
         return isinstance(self._entity, float) or isinstance(self._entity, int)
 
-    def _num_validate(self) -> bool:
-        if self._required:
-            return self._main_condition_for_num
-        return self._main_condition_for_num or self._entity is None
-
     def _positive_validate(self):
-        if self._main_condition_for_num:
+        if self._main_condition_for_entity:
             return self._entity >= 0
         return False
 
     def _range_validate(self):
-        if self._main_condition_for_num:
+        if self._main_condition_for_entity:
             return self._range_nums[0] <= self._entity <= self._range_nums[1]
         return False
 
     def is_valid(self, entity: Any) -> bool:
-        self._entity = entity
+        self._set_entity(entity)
         if self._positive:
             return self._positive_validate()
         if self._range_nums:
             return self._range_validate()
-        return self._num_validate()
+        return self._main_validate()
 
     def positive(self):
         self._positive = True
