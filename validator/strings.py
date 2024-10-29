@@ -12,7 +12,7 @@ class StringSchema(TypeSchema):
         self.min_len_count = None
 
     def _main_condition_for_entity(self) -> bool:
-        return isinstance(self._entity, str)
+        return self._entity != "" and isinstance(self._entity, str)
 
     def _contains_validate(self) -> bool:
         return self.cont in self.entity
@@ -22,11 +22,13 @@ class StringSchema(TypeSchema):
 
     def is_valid(self, entity: Any) -> bool:
         self._set_entity(entity)
+        if self._no_required_condition():
+            return True
         if self.cont:
             return self._contains_validate()
         if self.min_len_count:
             return self._len_validate()
-        return self._main_validate()
+        return self._main_condition_for_entity()
 
     def contains(self, cont: str):
         self.cont = cont

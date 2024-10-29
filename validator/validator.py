@@ -1,5 +1,7 @@
 from validator.strings import StringSchema
 from validator.numbers import NumberSchema
+from validator.lists import ListsSchema
+from validator.dicts import DictSchema
 
 
 class Validator:
@@ -18,4 +20,4 @@ class Validator:
 
     @staticmethod
     def dict():
-        return
+        return DictSchema()
