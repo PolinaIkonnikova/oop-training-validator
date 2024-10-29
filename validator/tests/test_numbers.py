@@ -19,11 +19,15 @@ class TestNumberSchema:
     def test_with_positive_validate(self, num_sch):
         num_sch.positive()
         assert not num_sch.is_valid(-5)
+        assert num_sch.is_valid(None)
+        num_sch.required()
         assert not num_sch.is_valid(None)
 
     def test_with_range_validate(self, num_sch):
         num_sch.range(-5, 5)
         assert num_sch.is_valid(1)
+        assert num_sch.is_valid(None)
+        num_sch.required()
         assert not num_sch.is_valid(None)
 
     def test_with_all_validates(self, num_sch):
