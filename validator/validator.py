@@ -11,3 +11,11 @@ class Validator:
     @staticmethod
     def number():
         return NumberSchema()
+
+    @staticmethod
+    def list():
+        return ListsSchema()
+
+    @staticmethod
+    def dict():
+        return
