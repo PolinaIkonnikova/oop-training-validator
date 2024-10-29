@@ -1,3 +1,6 @@
+install:
+	poetry install
+
 test-cov-l:
 	poetry run pytest --cov=validator
 
