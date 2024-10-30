@@ -15,7 +15,7 @@ class NumberSchema(TypeSchema):
 
     def _positive_validate(self):
         if self._main_condition_for_entity():
-            return self._entity >= 0
+            return self._entity > 0
         return False
 
     def _range_validate(self):
