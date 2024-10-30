@@ -18,6 +18,9 @@ class StringSchema(TypeSchema):
         self.cont = None
         self.min_len_count = None
 
+    def _no_required_condition(self) -> bool:
+        return self._required is False and (self._entity is None or self._entity == "")
+
     def _main_condition_for_entity(self) -> bool:
         return self._entity != "" and isinstance(self._entity, str)
 
