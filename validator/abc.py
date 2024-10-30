@@ -34,7 +34,8 @@ class TypeSchema(ABC):
         if self.active_validator is None:
             return self._main_condition_for_entity()
         if self.active_validator in self._lambda_validators:
-            return self._lambda_validators[self.active_validator](self._entity, *self.lambda_params)
+            return self._lambda_validators[self.active_validator](self._entity,
+                                                                  *self.lambda_params)
 
         return getattr(self, self.active_validator)()
 

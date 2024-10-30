@@ -1,6 +1,5 @@
-from typing import Any
-
 from validator.abc import TypeSchema
+
 
 class ListsSchema(TypeSchema):
 

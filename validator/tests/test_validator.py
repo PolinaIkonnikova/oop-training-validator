@@ -2,10 +2,12 @@ from typing import Callable
 from validator.numbers import NumberSchema
 from validator.validator import Validator
 
+
 def test_change_validators():
     v = Validator()
     sch = v.number()
     assert isinstance(sch, NumberSchema)
+
 
 def test_add_validator():
     v = Validator()

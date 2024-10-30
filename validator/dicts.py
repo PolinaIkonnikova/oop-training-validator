@@ -17,7 +17,8 @@ class DictSchema(TypeSchema):
         return self
 
     def _main_condition_for_entity(self) -> bool:
-        return all(list(map(lambda item: self._targets.get(item[0]).is_valid(item[1]),
+        return all(list(map(lambda item:
+                            self._targets.get(item[0]).is_valid(item[1]),
                             self._entity.items())))
 
     def _validate_key(self, key, val):

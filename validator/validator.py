@@ -6,8 +6,6 @@ from validator.lists import ListsSchema
 from validator.dicts import DictSchema
 
 
-
-
 class Validator:
 
     @staticmethod

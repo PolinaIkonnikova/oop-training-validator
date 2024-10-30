@@ -1,12 +1,4 @@
-from enum import Enum, auto
-from typing import Any
-
 from validator.abc import TypeSchema
-
-class StringValidateMethods(Enum):
-    lambda_ = auto()
-    contains  = auto()
-    min_len = auto()
 
 
 class StringSchema(TypeSchema):
