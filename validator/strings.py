@@ -37,5 +37,5 @@ class StringSchema(TypeSchema):
 
     def min_len(self, num: int):
         self.min_len_count = num
-        self.active_validator = self._len_validate().__name__
+        self.active_validator = self._len_validate.__name__
         return self

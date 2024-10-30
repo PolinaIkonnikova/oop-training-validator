@@ -14,3 +14,5 @@ class TestStringSchema:
         assert str_sch.is_valid("")
         str_sch.required()
         assert not str_sch.is_valid("")
+        str_sch.min_len(10)
+        assert not str_sch.is_valid("")
