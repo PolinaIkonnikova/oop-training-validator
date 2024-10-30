@@ -22,4 +22,4 @@ class TestDictSchema:
         assert dct_sch.is_valid({'name': 'kolya', 'age': 100})
         assert dct_sch.is_valid({'name': 'maya', 'age': None})
         assert not dct_sch.is_valid({'name': '', 'age': None})
-        # assert not dct_sch.is_valid({'name': 'ada', 'age': -5})
+        assert not dct_sch.is_valid({'name': 'ada', 'age': -5})
