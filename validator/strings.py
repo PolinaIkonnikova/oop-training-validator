@@ -1,13 +1,20 @@
+from enum import Enum, auto
 from typing import Any
 
 from validator.abc import TypeSchema
 
+class StringValidateMethods(Enum):
+    lambda_ = auto()
+    contains  = auto()
+    min_len = auto()
+
 
 class StringSchema(TypeSchema):
 
+    name = "string"
+
     def __init__(self):
         super().__init__()
-        self.entity = None
         self.cont = None
         self.min_len_count = None
 
@@ -15,27 +22,17 @@ class StringSchema(TypeSchema):
         return self._entity != "" and isinstance(self._entity, str)
 
     def _contains_validate(self) -> bool:
-        return self.cont in self.entity
+        return self.cont in self._entity
 
     def _len_validate(self):
-        return self.min_len_count <= len(self.entity)
-
-    def is_valid(self, entity: Any) -> bool:
-        self._set_entity(entity)
-        if self._no_required_condition():
-            return True
-        if self.cont:
-            return self._contains_validate()
-        if self.min_len_count:
-            return self._len_validate()
-        return self._main_condition_for_entity()
+        return self.min_len_count <= len(self._entity)
 
     def contains(self, cont: str):
         self.cont = cont
-        self.min_len_count = None
+        self.active_validator = self._contains_validate.__name__
         return self
 
     def min_len(self, num: int):
         self.min_len_count = num
-        self.cont = None
+        self.active_validator = self._len_validate().__name__
         return self
