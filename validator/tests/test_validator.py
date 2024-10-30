@@ -9,9 +9,12 @@ def test_change_validators():
     assert isinstance(sch, NumberSchema)
 
 
+def my_func(num):
+    return num % 2 == 0
+
+
 def test_add_validator():
     v = Validator()
-    fn = lambda num: num % 2 == 0
-    v.add_validator("number", "even", fn)
+    v.add_validator("number", "even", my_func)
     assert isinstance(v.number()._lambda_validators.get('even'), Callable)
     assert v.number().test("even", 5)
