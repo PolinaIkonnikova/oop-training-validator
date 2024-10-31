@@ -1,6 +1,6 @@
 import pytest
 
-from validator.numbers import NumberSchema
+from validator.schemas.numbers import NumberSchema
 
 
 @pytest.fixture(name="num_sch")

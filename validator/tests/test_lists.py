@@ -1,6 +1,6 @@
 import pytest
 
-from validator.lists import ListsSchema
+from validator.schemas.lists import ListsSchema
 
 
 @pytest.fixture(name="lst_sch")

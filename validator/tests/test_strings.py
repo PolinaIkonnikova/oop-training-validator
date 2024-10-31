@@ -1,6 +1,6 @@
 import pytest
 
-from validator.strings import StringSchema
+from validator.schemas.strings import StringSchema
 
 
 @pytest.fixture(name="str_sch")

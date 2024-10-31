@@ -1,5 +1,5 @@
 from typing import Callable
-from validator.numbers import NumberSchema
+from validator.schemas.numbers import NumberSchema
 from validator.validator import Validator
 
 
