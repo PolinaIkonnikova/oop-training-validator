@@ -1,8 +1,9 @@
-from typing import Any
-
 from validator.abc import TypeSchema
 
+
 class ListsSchema(TypeSchema):
+
+    name = "list"
 
     def __init__(self):
         super().__init__()
@@ -16,13 +17,7 @@ class ListsSchema(TypeSchema):
             return len(self._entity) == self._size
         return False
 
-    def is_valid(self, entity: Any) -> bool:
-        self._set_entity(entity)
-        if self._no_required_condition():
-            return True
-        if self._size:
-            return self._sizeof_validate()
-        return self._main_condition_for_entity()
-
     def sizeof(self, num: int):
         self._size = num
+        self.active_validator = self._sizeof_validate.__name__
+        return self
