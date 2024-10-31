@@ -1,6 +1,6 @@
 import pytest
 
-from validator.dicts import DictSchema
+from validator.schemas.dicts import DictSchema
 from validator.validator import Validator
 
 

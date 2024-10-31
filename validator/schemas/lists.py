@@ -1,7 +1,7 @@
-from validator.abc import TypeSchema
+from validator.schemas.base import BaseSchema
 
 
-class ListsSchema(TypeSchema):
+class ListsSchema(BaseSchema):
 
     name = "list"
 

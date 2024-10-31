@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Callable
 
 
-class TypeSchema(ABC):
+class BaseSchema(ABC):
 
     name = ""
     _lambda_validators: dict = {}
